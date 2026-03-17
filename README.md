@@ -62,11 +62,12 @@ This project demonstrates how to plug into different Sitecore contexts:
 
 ## Project Structure
 
-/app            # Next.js App Router (routes, layouts, page)
-/app/api        # Backend API routes
-/components     # Reusable UI components (shadcn)
-/lib            # Utilities and helpers
-/styles         # Global styles (app/globals.css)
+/app                  # Next.js App Router (routes, layouts, page)
+/app/api              # Backend API routes (e.g. sites/languages)
+/components           # Reusable UI components (shadcn)
+/components/examples  # SDK examples: built-in auth, custom auth (API route & server action)
+/lib                  # Utilities and helpers
+/public               # Static assets
 
 ## Getting Started
 
