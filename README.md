@@ -12,7 +12,7 @@ The goal of this series is to move beyond theory and demonstrate how Marketplace
 - Part 1: Fullstack Setup with Next.js & shadcn  
   https://ravindra-mishra.github.io/blogs/sitecore-marketplace-app-nextjs-shadcn-fullstack-guide-part-1
 
-- Part 2: Implementation & Extension Points  
+- Part 2: Authentication, Testing & Conclusion  
   https://ravindra-mishra.github.io/blogs/sitecore-marketplace-app-nextjs-shadcn-fullstack-guide-part-2
 
 ## Context
@@ -62,12 +62,11 @@ This project demonstrates how to plug into different Sitecore contexts:
 
 ## Project Structure
 
-/app            # Next.js app (routes, pages, layouts)
+/app            # Next.js App Router (routes, layouts, page)
+/app/api        # Backend API routes
 /components     # Reusable UI components (shadcn)
 /lib            # Utilities and helpers
-/pages/api      # Backend API routes
-/services       # Sitecore SDK integrations
-/styles         # Global styles
+/styles         # Global styles (app/globals.css)
 
 ## Getting Started
 
@@ -80,28 +79,31 @@ This project demonstrates how to plug into different Sitecore contexts:
 
 ### Installation
 
+```bash
 git clone https://github.com/ravindra-mishra/sitecore-marketplace-app-demo
-cd https://github.com/ravindra-mishra/sitecore-marketplace-app-demo
+cd sitecore-marketplace-app-demo
 npm install
+```
 
 ### Run locally
 
+```bash
 npm run dev
+```
+
+The app runs over HTTPS (required for Sitecore Cloud auth). Open **https://localhost:3000** in your browser.
 
 ## Configuration
 
-You will need to configure:
+Configure a `.env` file with values from [Sitecore App Studio](https://doc.sitecore.com/mp/en/developers/marketplace/introduction-to-sitecore-marketplace-for-custom-and-public-apps.html) (see the blog series for step-by-step setup):
 
-- Sitecore Marketplace App credentials
-- Auth0 client details
-- Environment variables
-
-Example:
-
-SITECORE_CLIENT_ID=
-SITECORE_CLIENT_SECRET=
-AUTH0_DOMAIN=
-AUTH0_CLIENT_ID=
+- `NEXT_PUBLIC_AUTH0_DOMAIN` – Auth0/Sitecore Cloud auth host (e.g. `https://auth.sitecorecloud.io`)
+- `NEXT_PUBLIC_AUTH0_CLIENT_ID` – Client ID from App Studio credentials
+- `NEXT_PUBLIC_AUTH0_AUDIENCE` – API audience (e.g. `https://api-webapp.sitecorecloud.io`)
+- `NEXT_PUBLIC_SITECORE_APP_ID` – Marketplace app ID
+- `NEXT_PUBLIC_SITECORE_ORGANIZATION_ID` – Organization ID (from portal URL)
+- `NEXT_PUBLIC_SITECORE_TENANT_ID` – Tenant ID (after installing the app)
+- `NEXT_PUBLIC_APP_BASE_URL` – App URL (e.g. `https://localhost:3000` for local dev)
 
 ## What This Demo Focuses On
 
